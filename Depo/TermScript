@@ -1,0 +1,18 @@
+#!/bin/bash
+
+mv ~/Depo/MariaDB.repo /etc/yum.repos.d/
+yum update -y
+yum install mariadb-server mariadb-client -y
+systemctl restart mariadb
+systemctl enable mariadb
+mysql_secure_installation
+yum install epel-release -y
+yum install python34 -y
+yum install python34-setuptools -y
+easy_install-3.4 pip -y
+pip install -U setuptools
+pip install -U wheel
+pip install mysql-connector-python
+pip install mysql-connector-python-rf
+export PYTHONPATH=$PYTHONPATH:/usr/lib64/python3.4/site-packages
+python ~/Depo/SysPathPrint.py
